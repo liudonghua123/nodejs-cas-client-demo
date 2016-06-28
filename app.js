@@ -7,14 +7,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cas = require('connect-cas');
 
-cas.configure({ 'host': 'localhost:8888',
-paths: {
-        validate: '/cas/validate', 
-        serviceValidate: '/cas/p3/serviceValidate', // CAS 3.0
-        proxyValidate: '/cas/p3/proxyValidate', // CAS 3.0
-        proxy: '/cas/proxy',
-        login: '/cas/login',
-        logout: '/cas/logout'
+cas.configure({
+    protocol: 'http',
+    host: 'ids.ynu.edu.cn',
+    port: 80,
+    paths: {
+        validate: '/authserver/validate',
+        serviceValidate: '/authserver/serviceValidate',
+        login: '/authserver/login',
+        logout: '/authserver/logout'
     }
 });
 

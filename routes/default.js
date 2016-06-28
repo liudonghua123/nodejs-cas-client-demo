@@ -26,9 +26,9 @@ router.get('/', f);
 
 router.get('/index', f);
 
-// cas.ssout('http://localhost:3000/protected/index') : handle logout requests directly from the CAS server
-// cas.serviceValidate()                              : validate service tickets received from the CAS server
-// cas.authenticate()                                 : request an authentication if the user is not authenticated
+// cas.ssout                    : handle logout requests directly from the CAS server
+// cas.serviceValidate()        : validate service tickets received from the CAS server
+// cas.authenticate()           : request an authentication if the user is not authenticated
 router.get('/protected/index', cas.ssout('/protected/index'), cas.serviceValidate(), cas.authenticate(), function(req, res) {
   res.render('protected', {user: getUser(req), attributes: getAttributes(req)});
 });
